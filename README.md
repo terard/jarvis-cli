@@ -8,5 +8,6 @@
 # Install
 
 01 | $ chmod a+x jarvis
+
 02 | $ export PATH=/Users/canyon/work/jarvis-cli/:$PATH
 

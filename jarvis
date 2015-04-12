@@ -1,10 +1,41 @@
 #!/usr/bin/env ruby
 require "thor"
+require "mail"
 
 class Jarvis < Thor
   desc "quickmail", "sends mail."
   def quickmail
     puts "quickmail in tha house ..."
+    #mail = Mail.new do
+      #from    'travis@impossiblecreature.com'
+      #to      'travis@drillingx.com'
+      #subject 'This is a test email'
+      ## body    File.read('../mailers/hi.txt')
+      #body    'hello.'
+    #end
+
+    # puts mail.to_s #=> "From: mikel@test.lindsaar.net\r\nTo: you@...
+
+    sendmail_running = false
+    sendmail_running = true unless `ps aux | grep sendmai[l]`.blank?
+    #sendmail_running = `ps aux | grep sendmai[l]`.blank?
+    #puts sendmail_running
+
+    #sendmail_running = system("ps aux | grep sendmai[l]")
+    #puts sendmail_running
+    # system( "ps aux | grep sendmai[l]" )
+    puts "sendmail running: #{sendmail_running}"
+    return unless sendmail_running
+
+    Mail.deliver do
+      from    "jarvis@impossiblecreature.com"
+      to      "travis@drillingx.com"
+      subject  "jarvis is the bomb.com"
+      body     "this is quickmail. i have no data."
+      # add_file '/full/path/to/somefile.png'
+    end
+
+    puts "quickmail sent."
   end
 end
 
