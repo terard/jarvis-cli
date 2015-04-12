@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require "thor"
+
+class Jarvis < Thor
+  desc "quickmail", "sends mail."
+  def quickmail
+    puts "quickmail in tha house ..."
+  end
+end
+
+Jarvis.start
